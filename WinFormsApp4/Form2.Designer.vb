@@ -33,12 +33,13 @@ Partial Class Form2
         Label2 = New Label()
         SearchTextBox = New TextBox()
         DataGridView1 = New DataGridView()
-        Column4 = New DataGridViewTextBoxColumn()
-        ModifyButton = New Button()
-        DeleteButton = New Button()
         Column1 = New DataGridViewTextBoxColumn()
         Column2 = New DataGridViewTextBoxColumn()
         Column3 = New DataGridViewTextBoxColumn()
+        Column4 = New DataGridViewTextBoxColumn()
+        ModifyButton = New Button()
+        DeleteButton = New Button()
+        BtnSave = New Button()
         Panel1.SuspendLayout()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -70,7 +71,7 @@ Partial Class Form2
         ' 
         ' AddButton
         ' 
-        AddButton.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        AddButton.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         AddButton.Location = New Point(738, 31)
         AddButton.Margin = New Padding(3, 4, 3, 4)
         AddButton.Name = "AddButton"
@@ -109,7 +110,7 @@ Partial Class Form2
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label4.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label4.Location = New Point(531, 11)
         Label4.Name = "Label4"
         Label4.Size = New Size(79, 21)
@@ -119,7 +120,7 @@ Partial Class Form2
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label3.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label3.Location = New Point(270, 4)
         Label3.Name = "Label3"
         Label3.Size = New Size(52, 21)
@@ -129,7 +130,7 @@ Partial Class Form2
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label2.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label2.Location = New Point(3, 11)
         Label2.Name = "Label2"
         Label2.Size = New Size(82, 21)
@@ -157,37 +158,6 @@ Partial Class Form2
         DataGridView1.Size = New Size(705, 333)
         DataGridView1.TabIndex = 3
         ' 
-        ' Column4
-        ' 
-        Column4.HeaderText = "Prénom"
-        Column4.Name = "Column4"
-        ' 
-        ' ModifyButton
-        ' 
-        ModifyButton.BackColor = Color.Blue
-        ModifyButton.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        ModifyButton.ForeColor = Color.Transparent
-        ModifyButton.Location = New Point(761, 293)
-        ModifyButton.Margin = New Padding(3, 4, 3, 4)
-        ModifyButton.Name = "ModifyButton"
-        ModifyButton.Size = New Size(168, 65)
-        ModifyButton.TabIndex = 4
-        ModifyButton.Text = "Modifier"
-        ModifyButton.UseVisualStyleBackColor = False
-        ' 
-        ' DeleteButton
-        ' 
-        DeleteButton.BackColor = Color.Red
-        DeleteButton.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        DeleteButton.ForeColor = Color.White
-        DeleteButton.Location = New Point(761, 394)
-        DeleteButton.Margin = New Padding(3, 4, 3, 4)
-        DeleteButton.Name = "DeleteButton"
-        DeleteButton.Size = New Size(168, 60)
-        DeleteButton.TabIndex = 5
-        DeleteButton.Text = "Supprimer"
-        DeleteButton.UseVisualStyleBackColor = False
-        ' 
         ' Column1
         ' 
         Column1.HeaderText = "Matricule"
@@ -206,11 +176,56 @@ Partial Class Form2
         Column3.Name = "Column3"
         Column3.Width = 220
         ' 
+        ' Column4
+        ' 
+        Column4.HeaderText = "Prénom"
+        Column4.Name = "Column4"
+        ' 
+        ' ModifyButton
+        ' 
+        ModifyButton.BackColor = Color.Blue
+        ModifyButton.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        ModifyButton.ForeColor = Color.Transparent
+        ModifyButton.Location = New Point(761, 293)
+        ModifyButton.Margin = New Padding(3, 4, 3, 4)
+        ModifyButton.Name = "ModifyButton"
+        ModifyButton.Size = New Size(168, 65)
+        ModifyButton.TabIndex = 4
+        ModifyButton.Text = "Modifier"
+        ModifyButton.UseVisualStyleBackColor = False
+        ' 
+        ' DeleteButton
+        ' 
+        DeleteButton.BackColor = Color.Red
+        DeleteButton.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        DeleteButton.ForeColor = Color.White
+        DeleteButton.Location = New Point(761, 394)
+        DeleteButton.Margin = New Padding(3, 4, 3, 4)
+        DeleteButton.Name = "DeleteButton"
+        DeleteButton.Size = New Size(168, 60)
+        DeleteButton.TabIndex = 5
+        DeleteButton.Text = "Supprimer"
+        DeleteButton.UseVisualStyleBackColor = False
+        ' 
+        ' BtnSave
+        ' 
+        BtnSave.BackColor = Color.ForestGreen
+        BtnSave.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        BtnSave.ForeColor = Color.White
+        BtnSave.Location = New Point(761, 475)
+        BtnSave.Margin = New Padding(3, 4, 3, 4)
+        BtnSave.Name = "BtnSave"
+        BtnSave.Size = New Size(168, 60)
+        BtnSave.TabIndex = 6
+        BtnSave.Text = "Sauvegarder"
+        BtnSave.UseVisualStyleBackColor = False
+        ' 
         ' Form2
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(960, 656)
+        Controls.Add(BtnSave)
         Controls.Add(DeleteButton)
         Controls.Add(ModifyButton)
         Controls.Add(DataGridView1)
@@ -245,5 +260,6 @@ Partial Class Form2
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents BtnSave As Button
 
 End Class

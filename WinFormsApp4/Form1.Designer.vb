@@ -110,6 +110,7 @@ Partial Class Form1
         Password.Location = New Point(53, 6)
         Password.Multiline = True
         Password.Name = "Password"
+        Password.PasswordChar = "."c
         Password.Size = New Size(294, 31)
         Password.TabIndex = 5
         ' 
@@ -136,7 +137,7 @@ Partial Class Form1
         ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.WhiteSmoke
         ClientSize = New Size(404, 498)

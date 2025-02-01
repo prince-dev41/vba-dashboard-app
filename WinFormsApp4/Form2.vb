@@ -1,7 +1,11 @@
-﻿Public Class Form2
+﻿Imports System.IO
+
+Public Class Form2
 
     ' Liste pour stocker les étudiants
     Private students As New List(Of Student)
+
+    Private chemin_bd As String = "etudiants.csv"
 
     ' Classe pour représenter un étudiant
     Private Class Student
@@ -85,11 +89,66 @@
         DataGridView1.DataSource = filteredStudents
     End Sub
 
+    Private Sub BtnSave_Save(sender As Object, e As EventArgs) Handles BtnSave.Click
+        Sauvegarder1()
+    End Sub
+
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
 
     End Sub
 
     Private Sub NomTextBox_TextChanged(sender As Object, e As EventArgs) Handles NomTextBox.TextChanged
 
+    End Sub
+
+    Private Sub Sauvegarder1()
+        Try
+            Using writer As New StreamWriter(chemin_bd)
+                writer.WriteLine("Matricule,Nom,Prenom")
+                For Each student As Student In students
+                    writer.WriteLine($"{student.Matricule},{student.Nom},{student.Prenom}")
+                Next
+            End Using
+
+            MessageBox.Show("Les données ont été sauvegardées avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBox.Show("Erreur lors de la sauvegarde de l'étudiant : " & ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub ChargerEtudiants()
+        Try
+            ' Vérifier si le fichier existe
+            If Not File.Exists(chemin_bd) Then
+                MessageBox.Show("Le fichier CSV n'existe pas.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return
+            End If
+
+            Dim lines As String() = File.ReadAllLines(chemin_bd)
+            students.Clear()
+
+            For i As Integer = 1 To lines.Length - 1
+                Dim line As String = lines(i)
+                Dim values As String() = line.Split(","c)
+
+                If values.Length = 3 Then
+                    Dim student As New Student With {
+                    .Matricule = values(0),
+                    .Nom = values(1),
+                    .Prenom = values(2)
+                }
+                    students.Add(student)
+                End If
+            Next
+            DataGridView1.DataSource = Nothing
+            DataGridView1.DataSource = students
+            MessageBox.Show("Les données ont été chargées avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBox.Show("Erreur lors du chargement des données : " & ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ChargerEtudiants()
     End Sub
 End Class
